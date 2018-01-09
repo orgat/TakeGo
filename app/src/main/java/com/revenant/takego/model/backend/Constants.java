@@ -1,5 +1,9 @@
 package com.revenant.takego.model.backend;
 
+import android.content.ContentValues;
+
+import com.revenant.takego.model.entities.*;
+
 /**
  * Created by Or on 30-Dec-17.
  */
@@ -49,6 +53,65 @@ public class Constants {
         public static final String LITERS_REFUELED = "litersRefueled";
     }
 
+    public static ContentValues BranchToContentValues(Branch branch) {
+        ContentValues cv = new ContentValues();
+        cv.put(BranchConst.ADDRESS, branch.getAddress());
+        cv.put(BranchConst.PARKING_SPACES, branch.getParkingSpaces());
+        cv.put(BranchConst.BRANCH_NUMBER, branch.getBranchNumber());
 
+        return cv;
+    }
+
+    public static ContentValues CarToContentValues(Car car) {
+        ContentValues cv = new ContentValues();
+        cv.put(CarConst.ID, car.getCarId());
+        cv.put(CarConst.DEFAULT_BRANCH_NUMBER, car.getDefaultBranchNumber());
+        cv.put(CarConst.KILOMETERS_COUNT, car.getKilometersCount());
+        cv.put(CarConst.MODEL, car.getModel());
+
+        return cv;
+    }
+
+    public static ContentValues CarModelToContentValues(CarModel carModel) {
+        ContentValues cv = new ContentValues();
+        cv.put(CarModelConst.GEAR_TYPE, carModel.getGearType().toString());
+        cv.put(CarModelConst.BRAND, carModel.getBrand());
+        cv.put(CarModelConst.ENGINE_SIZE, carModel.getEngineSize());
+        cv.put(CarModelConst.MODEL_NAME, carModel.getModelName());
+        cv.put(CarModelConst.MODEL_NUMBER, carModel.getModelNumber());
+        cv.put(CarModelConst.SEATS, carModel.getSeats());
+        return cv;
+    }
+
+    public static ContentValues CustomerToContentValues(Customer customer) {
+        ContentValues cv = new ContentValues();
+        cv.put(CustomerConst.ID, customer.getId());
+        cv.put(CustomerConst.CREDIT_CARD, customer.getCreditCard());
+        cv.put(CustomerConst.EMAIL, customer.getEmail());
+        cv.put(CustomerConst.NAME, customer.getName());
+        cv.put(CustomerConst.LAST_NAME, customer.getLastName());
+        cv.put(CustomerConst.PHONE_NUMBER, customer.getPhoneNumber());
+        return cv;
+    }
+
+    public static ContentValues ReservationToContentValues(Reservation reservation){
+        ContentValues cv = new ContentValues();
+        cv.put(ReservationConst.CUSTOMER_NUMBER,reservation.getCustomerNumber());
+        cv.put(ReservationConst.IS_OPEN,reservation.isOpen());
+        cv.put(ReservationConst.LITERS_REFUELED,reservation.getLitersRefueled());
+        cv.put(ReservationConst.WAS_REFUELED,reservation.wasRefueled());
+        cv.put(ReservationConst.PRE_KM_COUNT,reservation.getPreKMCount());
+        cv.put(ReservationConst.POST_KM_COUNT,reservation.getPostKMCount());
+        cv.put(ReservationConst.RENT_BEGINNING,reservation.getRentBeginning().toString());
+        cv.put(ReservationConst.RENT_END,reservation.getRentEnd().toString());
+    }
+
+    public static CarModel ContentValuesToCarModel(ContentValues cv) {
+
+        CarModel carModel = new CarModel();
+
+        carModel.setGearType(CarModel.Gear.valueOf(cv.getAsString(CarModelConst.GEAR_TYPE)));
+
+    }
 
 }

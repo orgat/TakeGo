@@ -5,23 +5,26 @@ package com.revenant.takego.model.entities;
  */
 
 public class Car {
-    private CarModel model;
+    private String model;
     private long defaultBranchNumber;
     private double kilometersCount;
     private long carId;
 
-    public Car(CarModel model, long defaultBranchNumber, double kilometersCount, long carId) {
+    public Car(String model, long defaultBranchNumber, double kilometersCount, long carId) {
         this.model = model;
         this.defaultBranchNumber = defaultBranchNumber;
         this.kilometersCount = kilometersCount;
         this.carId = carId;
     }
 
-    public CarModel getModel() {
+    public Car() {
+    }
+
+    public String getModel() {
         return model;
     }
 
-    public void setModel(CarModel model) {
+    public void setModel(String model) {
         this.model = model;
     }
 

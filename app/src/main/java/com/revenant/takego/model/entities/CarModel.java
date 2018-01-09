@@ -14,6 +14,9 @@ public class CarModel {
     CarModel.Gear gearType;
     private int seats;
 
+    public CarModel() {
+    }
+
     public CarModel(long modelNumber, String brand, String modelName, int engineSize, Gear gearType, int seats) {
         this.modelNumber = modelNumber;
         this.brand = brand;

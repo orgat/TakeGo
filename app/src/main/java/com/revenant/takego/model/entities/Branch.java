@@ -5,21 +5,24 @@ package com.revenant.takego.model.entities;
  */
 
 public class Branch {
-    private Branch.Address address;
+    private String address;
     private int parkingSpaces;
     private long branchNumber;
 
-    public Branch(Address address, int parkingSpaces, long branchNumber) {
+    public Branch(String address, int parkingSpaces, long branchNumber) {
         this.address = address;
         this.parkingSpaces = parkingSpaces;
         this.branchNumber = branchNumber;
     }
 
-    public Address getAddress() {
+    public Branch() {
+    }
+
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -39,39 +42,6 @@ public class Branch {
         this.branchNumber = branchNumber;
     }
 
-    public class Address {
-        private String city;
-        private String street;
-        private long houseNumber;
 
-        public Address(String city, String street, long houseNumber) {
-            this.city = city;
-            this.street = street;
-            this.houseNumber = houseNumber;
-        }
 
-        public String getCity() {
-            return city;
-        }
-
-        public void setCity(String city) {
-            this.city = city;
-        }
-
-        public String getStreet() {
-            return street;
-        }
-
-        public void setStreet(String street) {
-            this.street = street;
-        }
-
-        public long getHouseNumber() {
-            return houseNumber;
-        }
-
-        public void setHouseNumber(long houseNumber) {
-            this.houseNumber = houseNumber;
-        }
-    }
 }

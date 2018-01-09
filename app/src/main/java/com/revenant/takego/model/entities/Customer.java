@@ -21,6 +21,9 @@ public class Customer {
         this.creditCard = creditCard;
     }
 
+    public Customer() {
+    }
+
     public String getName() {
         return name;
     }
