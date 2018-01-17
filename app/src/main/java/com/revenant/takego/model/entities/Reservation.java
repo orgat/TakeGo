@@ -10,8 +10,8 @@ public class Reservation {
     private long customerNumber;
     private boolean isOpen;
     private int numberOfCars;
-    private Date rentBeginning;
-    private Date rentEnd;
+    private String rentBeginning;
+    private String rentEnd;
     private double preKMCount;
     private double postKMCount;
     private boolean wasRefueled;
@@ -44,19 +44,19 @@ public class Reservation {
         this.numberOfCars = numberOfCars;
     }
 
-    public Date getRentBeginning() {
+    public String getRentBeginning() {
         return rentBeginning;
     }
 
-    public void setRentBeginning(Date rentBeginning) {
+    public void setRentBeginning(String rentBeginning) {
         this.rentBeginning = rentBeginning;
     }
 
-    public Date getRentEnd() {
+    public String getRentEnd() {
         return rentEnd;
     }
 
-    public void setRentEnd(Date rentEnd) {
+    public void setRentEnd(String rentEnd) {
         this.rentEnd = rentEnd;
     }
 
@@ -90,5 +90,23 @@ public class Reservation {
 
     public void setLitersRefueled(double litersRefueled) {
         this.litersRefueled = litersRefueled;
+    }
+
+    @Override
+    public String toString() {
+        String status = isOpen ? "Open" : "Closed";
+        String refueled = wasRefueled ? "Yes" : "No";
+
+
+        String reservation = "Customer number: " + customerNumber + "\n"
+                + "Status: " + status + "\n"
+                + "Number of cars: " + numberOfCars + "\n"
+                + "Rent beginning: " + rentBeginning + "\n"
+                + "Rent end: " + rentEnd + "\n"
+                + "Pre-mileage: " + preKMCount + "\n"
+                + "Post-mileage: " + postKMCount + "\n"
+                + "Was refueled: " + refueled + "\n"
+                + "Liters refueled: " +litersRefueled;
+        return reservation;
     }
 }

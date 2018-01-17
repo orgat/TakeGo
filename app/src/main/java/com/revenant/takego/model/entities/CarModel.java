@@ -76,4 +76,14 @@ public class CarModel {
 
     public enum Gear { Manual,Automatic; }
 
+    @Override
+    public String toString() {
+       String model = "Model number: " + modelNumber +"\n"
+               + "Model name: " + modelName + "\n"
+               + "Brand: " + brand + "\n"
+               + "Engine size: " + engineSize + "\n"
+               + "Gear type: " + gearType.toString() + "\n"
+               + "Number of seats: " + seats;
+       return model;
+    }
 }

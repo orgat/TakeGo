@@ -42,6 +42,11 @@ public class Branch {
         this.branchNumber = branchNumber;
     }
 
-
-
+    @Override
+    public String toString() {
+        String branch = "Address: "+ address+ "\n"
+                + "Branc number: " +branchNumber + "\n"
+                + "Parking spaces: " + parkingSpaces;
+        return branch;
+    }
 }

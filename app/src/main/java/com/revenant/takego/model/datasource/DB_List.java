@@ -42,41 +42,63 @@ public class DB_List implements DB_Manager {
 
     @Override
     public boolean customerExists(long id) {
+        for(Customer customer : allCustomers){
+            if(customer.getId()==id){
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public long addCustomer(ContentValues newCustomer) {
-        return 0;
+        Customer customer = ContentValuesToCustomer(newCustomer);
+        allCustomers.add(customer);
+
+        return customer.getId();
     }
 
     @Override
     public long addModel(ContentValues newModel) {
-        return 0;
+        CarModel carModel = ContentValuesToCarModel(newModel);
+        allCarModels.add(carModel);
+        return carModel.getModelNumber();
     }
 
     @Override
     public long addCar(ContentValues newCar) {
-        return 0;
+        Car car = ContentValuesToCar(newCar);
+        allCars.add(car);
+        return car.getCarId();
+
     }
 
     @Override
+    public long addBranch(ContentValues newBranch){
+        Branch branch =ContentValuesToBranch(newBranch);
+        allBranches.add(branch);
+        return branch.getBranchNumber();
+    }
+
+
+
+    @Override
     public List<Car> returnAllCars() {
-        return null;
+        return allCars;
     }
 
     @Override
     public List<CarModel> returnAllCarModels() {
-        return null;
+        return allCarModels;
     }
 
     @Override
     public List<Branch> returnAllBranches() {
-        return null;
+        return allBranches;
     }
 
     @Override
     public List<Customer> returnAllCustomers() {
-        return null;
+        return allCustomers;
     }
 }

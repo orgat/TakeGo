@@ -18,6 +18,7 @@ public interface DB_Manager {
     long addCustomer(ContentValues newCustomer);
     long addModel(ContentValues newModel);
     long addCar(ContentValues newCar);
+    long addBranch(ContentValues newBranch);
 
 
     List<Car> returnAllCars();

@@ -7,13 +7,13 @@ package com.revenant.takego.model.entities;
 public class Car {
     private String model;
     private long defaultBranchNumber;
-    private double kilometersCount;
+    private double mileage;
     private long carId;
 
-    public Car(String model, long defaultBranchNumber, double kilometersCount, long carId) {
+    public Car(String model, long defaultBranchNumber, double mileage, long carId) {
         this.model = model;
         this.defaultBranchNumber = defaultBranchNumber;
-        this.kilometersCount = kilometersCount;
+        this.mileage = mileage;
         this.carId = carId;
     }
 
@@ -36,12 +36,12 @@ public class Car {
         this.defaultBranchNumber = defaultBranchNumber;
     }
 
-    public double getKilometersCount() {
-        return kilometersCount;
+    public double getMileage() {
+        return mileage;
     }
 
-    public void setKilometersCount(double kilometersCount) {
-        this.kilometersCount = kilometersCount;
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
     }
 
     public long getCarId() {
@@ -50,5 +50,14 @@ public class Car {
 
     public void setCarId(long carId) {
         this.carId = carId;
+    }
+
+    @Override
+    public String toString() {
+        String car = "Car ID: " + carId + "\n"
+                + "Model: " + model + "\n"
+                + "Default branch number: " + defaultBranchNumber + "\n"
+                + "Mileage: "+ mileage;
+        return car;
     }
 }

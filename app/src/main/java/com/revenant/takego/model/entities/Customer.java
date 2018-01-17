@@ -8,11 +8,11 @@ public class Customer {
     private String name;
     private String lastName;
     private long id;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
     private long creditCard;
 
-    public Customer(String name, String lastName, long id, long phoneNumber, String email, long creditCard) {
+    public Customer(String name, String lastName, long id, String phoneNumber, String email, long creditCard) {
         this.name = name;
         this.lastName = lastName;
         this.id = id;
@@ -48,11 +48,11 @@ public class Customer {
         this.id = id;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -70,5 +70,16 @@ public class Customer {
 
     public void setCreditCard(long creditCard) {
         this.creditCard = creditCard;
+    }
+
+    @Override
+    public String toString() {
+        String customer = "ID: " + id +"\n"
+                + "Name: " + name + "\n"
+                + "Last name: " + lastName + "\n"
+                + "Phone number: "+ phoneNumber + "\n"
+                + "Email address: " + email + "\n"
+                + "Credit card: " + creditCard;
+        return customer;
     }
 }
