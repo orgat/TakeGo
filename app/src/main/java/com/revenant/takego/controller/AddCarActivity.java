@@ -39,9 +39,14 @@ public class AddCarActivity extends Activity {
     private void addCar() {
         final ContentValues cv = new ContentValues();
         try{
-            cv.put(Constants.CarConst.ID,Long.valueOf(id.getText().toString()));
+            if(id.getText().toString().isEmpty())
+            {
+                cv.put(Constants.CarConst.ID, "");
+            }else {
+                cv.put(Constants.CarConst.ID, Long.valueOf(id.getText().toString()));
+            }
             cv.put(Constants.CarConst.DEFAULT_BRANCH_NUMBER,Long.valueOf(defualtBranch.getText().toString()));
-            cv.put(Constants.CarConst.MODEL,model.getText().toString());
+            cv.put(Constants.CarConst.MODEL_NUMBER,Long.valueOf(model.getText().toString()));
             cv.put(Constants.CarConst.MILEAGE,Double.valueOf(mileage.getText().toString()));
 
             new AsyncTask<Void,Void,Long>(){
@@ -53,7 +58,7 @@ public class AddCarActivity extends Activity {
 
                 @Override
                 protected Long doInBackground(Void... voids) {
-                    return DBManagerFactory.getDB_List().addCar(cv);
+                    return DBManagerFactory.getDB_SQL().addCar(cv);
                 }
             }.execute();
         } catch (Exception e){
@@ -70,7 +75,7 @@ public class AddCarActivity extends Activity {
     private void findViews() {
         id = findViewById(R.id.carIDId);
         defualtBranch = findViewById(R.id.defaultBranchId);
-        model = findViewById(R.id.modelID);
+        model = findViewById(R.id.carModelId);
         mileage = findViewById(R.id.mileageId);
         addCar = findViewById(R.id.addCarButtonId);
     }

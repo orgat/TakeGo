@@ -6,6 +6,7 @@ import com.revenant.takego.model.entities.Branch;
 import com.revenant.takego.model.entities.Car;
 import com.revenant.takego.model.entities.CarModel;
 import com.revenant.takego.model.entities.Customer;
+import com.revenant.takego.model.entities.Reservation;
 
 
 /**
@@ -19,12 +20,16 @@ public interface DB_Manager {
     long addModel(ContentValues newModel);
     long addCar(ContentValues newCar);
     long addBranch(ContentValues newBranch);
-
+    long addReservation(ContentValues newReservation);
+    long updateCar(ContentValues newCar);
 
     List<Car> returnAllCars();
     List<CarModel> returnAllCarModels();
     List<Branch> returnAllBranches();
     List<Customer> returnAllCustomers();
+    List<Reservation> returnAllReservations();
+    List<Car> returnAllFreeCars();
+
 
 
 

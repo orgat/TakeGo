@@ -10,9 +10,9 @@ public class Customer {
     private long id;
     private String phoneNumber;
     private String email;
-    private long creditCard;
+    private String creditCard;
 
-    public Customer(String name, String lastName, long id, String phoneNumber, String email, long creditCard) {
+    public Customer(String name, String lastName, long id, String phoneNumber, String email, String creditCard) {
         this.name = name;
         this.lastName = lastName;
         this.id = id;
@@ -64,11 +64,11 @@ public class Customer {
         this.email = email;
     }
 
-    public long getCreditCard() {
+    public String getCreditCard() {
         return creditCard;
     }
 
-    public void setCreditCard(long creditCard) {
+    public void setCreditCard(String creditCard) {
         this.creditCard = creditCard;
     }
 

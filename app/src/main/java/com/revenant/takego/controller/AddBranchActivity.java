@@ -55,8 +55,13 @@ public class AddBranchActivity extends Activity {
     private void addBranch() {
         final ContentValues cv=  new ContentValues();
         try{
+            if(branchNumberText.getText().toString().isEmpty()){
+                cv.put(Constants.BranchConst.BRANCH_NUMBER,"");
+            } else {
+                cv.put(Constants.BranchConst.BRANCH_NUMBER, Long.valueOf(branchNumberText.getText().toString()));
+            }
             cv.put(Constants.BranchConst.ADDRESS,addressText.getText().toString());
-            cv.put(Constants.BranchConst.BRANCH_NUMBER, Long.valueOf(branchNumberText.getText().toString()));
+
             cv.put(Constants.BranchConst.PARKING_SPACES,Integer.valueOf(parkingSpacesText.getText().toString()));
 
             new AsyncTask<Void, Void, Long>(){
@@ -68,7 +73,7 @@ public class AddBranchActivity extends Activity {
 
                 @Override
                 protected Long doInBackground(Void... voids) {
-                   return DBManagerFactory.getDB_List().addBranch(cv);
+                   return DBManagerFactory.getDB_SQL().addBranch(cv);
 
                 }
             }.execute();

@@ -79,7 +79,11 @@ public class AddModelActivity extends Activity {
     private void addModel() {
         final ContentValues cv = new ContentValues();
         try{
-            cv.put(Constants.CarModelConst.MODEL_NUMBER,Long.valueOf(modelNumber.getText().toString()));
+            if(modelNumber.getText().toString().isEmpty()){
+                cv.put(Constants.CarModelConst.MODEL_NUMBER,"");
+            } else {
+                cv.put(Constants.CarModelConst.MODEL_NUMBER, Long.valueOf(modelNumber.getText().toString()));
+            }
             cv.put(Constants.CarModelConst.MODEL_NAME,modelName.getText().toString());
             cv.put(Constants.CarModelConst.BRAND,brand.getText().toString());
             cv.put(Constants.CarModelConst.ENGINE_SIZE, Integer.valueOf(engineSize.getText().toString()));
@@ -95,7 +99,7 @@ public class AddModelActivity extends Activity {
 
                 @Override
                 protected Long doInBackground(Void... voids) {
-                    return DBManagerFactory.getDB_List().addModel(cv);
+                    return DBManagerFactory.getDB_SQL().addModel(cv);
                 }
             }.execute();
         } catch (Exception e){

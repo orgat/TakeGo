@@ -14,23 +14,22 @@ public class Constants {
 
     public static class BranchConst {
         public static final String BRANCH = "branch";
-        public static final String ADD_BRANCH ="add branch";
         public static final String ADDRESS = "address";
         public static final String PARKING_SPACES = "parkingSpaces";
-        public static final String BRANCH_NUMBER = "branchNumber";
+        public static final String BRANCH_NUMBER = "_id";
     }
 
     public static class CarConst {
         public static final String CAR = "car";
-        public static final String MODEL = "model";
-        public static final String DEFAULT_BRANCH_NUMBER = "defualtBranchNumber";
+        public static final String MODEL_NUMBER = "modelNumber";
+        public static final String DEFAULT_BRANCH_NUMBER = "defaultBranchNumber";
         public static final String MILEAGE = "mileage";
         public static final String ID = "_id";
     }
 
     public static class CarModelConst {
         public static final String MODEL = "model";
-        public static final String MODEL_NUMBER = "modelNumber";
+        public static final String MODEL_NUMBER = "_id";
         public static final String BRAND = "brand";
         public static final String MODEL_NAME = "modelName";
         public static final String ENGINE_SIZE = "engineSize";
@@ -43,22 +42,24 @@ public class Constants {
         public static final String NAME = "name";
         public static final String LAST_NAME = "lastName";
         public static final String ID = "_id";
-        public static final String PHONE_NUMBER = "phoneNumber";
+        public static final String PHONE_NUMBER = "phone";
         public static final String EMAIL = "email";
         public static final String CREDIT_CARD = "creditCard";
     }
 
     public static class ReservationConst {
+        public static final String RESERVATION_NUMBER = "_id";
+        public static final String CAR_NUMBER = "carNumber";
         public static final String RESERVATION = "reservation";
         public static final String CUSTOMER_NUMBER = "customerNumber";
         public static final String IS_OPEN = "isOpen";
-        public static final String NUMBER_OF_CARS = "numberOfCars";
         public static final String RENT_BEGINNING = "rentBeginning";
         public static final String RENT_END = "rentEnd";
         public static final String PRE_KM_COUNT = "preKMCount";
         public static final String POST_KM_COUNT = "postKMCount";
         public static final String WAS_REFUELED = "wasRefueled";
         public static final String LITERS_REFUELED = "litersRefueled";
+        public static final String TOTAL_PRICE = "price";
     }
 
     public static ContentValues BranchToContentValues(Branch branch) {
@@ -75,7 +76,7 @@ public class Constants {
         cv.put(CarConst.ID, car.getCarId());
         cv.put(CarConst.DEFAULT_BRANCH_NUMBER, car.getDefaultBranchNumber());
         cv.put(CarConst.MILEAGE, car.getMileage());
-        cv.put(CarConst.MODEL, car.getModel());
+        cv.put(CarConst.MODEL_NUMBER, car.getModelNumber());
 
         return cv;
     }
@@ -112,7 +113,9 @@ public class Constants {
         cv.put(ReservationConst.POST_KM_COUNT, reservation.getPostKMCount());
         cv.put(ReservationConst.RENT_BEGINNING, reservation.getRentBeginning());
         cv.put(ReservationConst.RENT_END, reservation.getRentEnd());
-        cv.put(ReservationConst.NUMBER_OF_CARS, reservation.getNumberOfCars());
+        cv.put(ReservationConst.RESERVATION_NUMBER, reservation.getReservationNumber());
+        cv.put(ReservationConst.TOTAL_PRICE , reservation.getPrice());
+        cv.put(ReservationConst.CAR_NUMBER, reservation.getCarNumber());
 
         return cv;
     }
@@ -132,7 +135,7 @@ public class Constants {
         car.setCarId(cv.getAsLong(CarConst.ID));
         car.setDefaultBranchNumber(cv.getAsLong(CarConst.DEFAULT_BRANCH_NUMBER));
         car.setMileage(cv.getAsDouble(CarConst.MILEAGE));
-        car.setModel(cv.getAsString(CarConst.MODEL));
+        car.setModelNumber(cv.getAsLong(CarConst.MODEL_NUMBER));
 
         return car;
     }
@@ -157,7 +160,7 @@ public class Constants {
         customer.setName(cv.getAsString(CustomerConst.NAME));
         customer.setLastName(cv.getAsString(CustomerConst.LAST_NAME));
         customer.setEmail(cv.getAsString(CustomerConst.EMAIL));
-        customer.setCreditCard(cv.getAsLong(CustomerConst.CREDIT_CARD));
+        customer.setCreditCard(cv.getAsString(CustomerConst.CREDIT_CARD));
         customer.setPhoneNumber(cv.getAsString(CustomerConst.PHONE_NUMBER));
 
         return customer;
@@ -167,7 +170,6 @@ public class Constants {
 
         Reservation reservation = new Reservation();
         reservation.setCustomerNumber(cv.getAsLong(ReservationConst.CUSTOMER_NUMBER));
-        reservation.setNumberOfCars(cv.getAsInteger(ReservationConst.NUMBER_OF_CARS));
         reservation.setOpen(cv.getAsBoolean(ReservationConst.IS_OPEN));
         reservation.setPreKMCount(cv.getAsDouble(ReservationConst.PRE_KM_COUNT));
         reservation.setPostKMCount(cv.getAsDouble(ReservationConst.POST_KM_COUNT));
@@ -175,6 +177,9 @@ public class Constants {
         reservation.setRentEnd(cv.getAsString(ReservationConst.RENT_END));
         reservation.setWasRefueled(cv.getAsBoolean(ReservationConst.WAS_REFUELED));
         reservation.setLitersRefueled(cv.getAsDouble(ReservationConst.LITERS_REFUELED));
+        reservation.setReservationNumber(cv.getAsLong(ReservationConst.RESERVATION_NUMBER));
+        reservation.setPrice(cv.getAsDouble(ReservationConst.TOTAL_PRICE));
+        reservation.setCarNumber(cv.getAsLong(ReservationConst.CAR_NUMBER));
 
         return reservation;
     }

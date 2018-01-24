@@ -74,16 +74,16 @@ public class CarModel {
         this.seats = seats;
     }
 
-    public enum Gear { Manual,Automatic; }
+    public enum Gear {Automatic, Manual}
 
     @Override
     public String toString() {
-       String model = "Model number: " + modelNumber +"\n"
-               + "Model name: " + modelName + "\n"
-               + "Brand: " + brand + "\n"
-               + "Engine size: " + engineSize + "\n"
-               + "Gear type: " + gearType.toString() + "\n"
-               + "Number of seats: " + seats;
-       return model;
+        String model = "Model number: " + modelNumber + "\n"
+                + "Model name: " + modelName + "\n"
+                + "Brand: " + brand + "\n"
+                + "Engine size: " + engineSize + "\n"
+                + "Gear type: " + gearType.toString() + "\n"
+                + "Number of seats: " + seats;
+        return model;
     }
 }

@@ -51,6 +51,16 @@ public class DB_List implements DB_Manager {
     }
 
     @Override
+    public List<Car> returnAllFreeCars() {
+        return null;
+    }
+
+    @Override
+    public long updateCar(ContentValues newCar) {
+        return 0;
+    }
+
+    @Override
     public long addCustomer(ContentValues newCustomer) {
         Customer customer = ContentValuesToCustomer(newCustomer);
         allCustomers.add(customer);
@@ -80,6 +90,12 @@ public class DB_List implements DB_Manager {
         return branch.getBranchNumber();
     }
 
+    @Override
+    public long addReservation(ContentValues newReservation){
+        Reservation reservation = ContentValuesToReservation(newReservation);
+        allReservations.add(reservation);
+        return reservation.getReservationNumber();
+    }
 
 
     @Override
@@ -101,4 +117,7 @@ public class DB_List implements DB_Manager {
     public List<Customer> returnAllCustomers() {
         return allCustomers;
     }
+
+    @Override
+    public List<Reservation> returnAllReservations() {return allReservations;}
 }

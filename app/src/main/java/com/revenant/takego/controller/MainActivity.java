@@ -21,8 +21,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button addBranch;
     private Button addCarModel;
+    private Button addCustomer;
+    private Button addCar;
+    private Button addReservation;
+
+    private Button showAllCars;
+    private Button showAllCustomers;
     private Button showAllBranches;
     private Button showAllModels;
+    private Button showAllReservations;
     private Intent intent;
 
 
@@ -43,11 +50,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addCarModel = findViewById(R.id.addCarModelMainId);
         addCarModel.setOnClickListener(this);
 
+        addCar = findViewById(R.id.addCarMainId);
+        addCar.setOnClickListener(this);
+
+        addCustomer = findViewById(R.id.addCustomerMainId);
+        addCustomer.setOnClickListener(this);
+
+       // addReservation = findViewById(R.id.addReservationMainId);
+       // addReservation.setOnClickListener(this);
+
+        showAllCars = findViewById(R.id.displayAllCarsMainId);
+        showAllCars.setOnClickListener(this);
+
         showAllBranches = findViewById(R.id.displayAllBranchesMainId);
         showAllBranches.setOnClickListener(this);
 
         showAllModels = findViewById(R.id.displayAllModelsMainId);
         showAllModels.setOnClickListener(this);
+
+        showAllCustomers = findViewById(R.id.displayAllCustomersMainId);
+        showAllCustomers.setOnClickListener(this);
+
+      //  showAllReservations = findViewById(R.id.displayAllReservationsMainId);
+     //   showAllReservations.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -76,6 +103,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra(Constants.SHOW_ALL, Constants.CarModelConst.MODEL);
                 startActivity(intent);
                 break;
+
+            case R.id.addCarMainId:
+                intent = new Intent(MainActivity.this, AddCarActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.displayAllCarsMainId:
+                intent = new Intent(MainActivity.this, ShowAllActivity.class);
+                intent.putExtra(Constants.SHOW_ALL , Constants.CarConst.CAR);
+                startActivity(intent);
+                break;
+
+            case R.id.addCustomerMainId:
+                intent = new Intent(MainActivity.this, AddCustomerActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.displayAllCustomersMainId:
+                intent = new Intent(MainActivity.this, ShowAllActivity.class);
+                intent.putExtra(Constants.SHOW_ALL , Constants.CustomerConst.CUSTOMER);
+                startActivity(intent);
+                break;
+
+          //  case R.id.addReservationMainId:
+        //        intent = new Intent(MainActivity.this, AddReservationActivity.class);
+            //    startActivity(intent);
+             //   break;
+          //  case R.id.displayAllReservationsMainId:
+             //   intent = new Intent(MainActivity.this, ShowAllActivity.class);
+             //   intent.putExtra(Constants.SHOW_ALL, Constants.ReservationConst.RESERVATION);
+              //  startActivity(intent);
+              //  break;
 
         }
     }
