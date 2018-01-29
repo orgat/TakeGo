@@ -1,5 +1,6 @@
 package com.revenant.takego.controller;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 
 import com.revenant.takego.R;
 import com.revenant.takego.model.backend.DBManagerFactory;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Intent intent;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addCustomer = findViewById(R.id.addCustomerMainId);
         addCustomer.setOnClickListener(this);
 
-       // addReservation = findViewById(R.id.addReservationMainId);
-       // addReservation.setOnClickListener(this);
+        addReservation = findViewById(R.id.addReservationMainId);
+        addReservation.setOnClickListener(this);
 
         showAllCars = findViewById(R.id.displayAllCarsMainId);
         showAllCars.setOnClickListener(this);
@@ -71,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showAllCustomers = findViewById(R.id.displayAllCustomersMainId);
         showAllCustomers.setOnClickListener(this);
 
-      //  showAllReservations = findViewById(R.id.displayAllReservationsMainId);
-     //   showAllReservations.setOnClickListener(this);
+        showAllReservations = findViewById(R.id.displayAllReservationsMainId);
+        showAllReservations.setOnClickListener(this);
 
 
     }
@@ -125,15 +128,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
 
-          //  case R.id.addReservationMainId:
-        //        intent = new Intent(MainActivity.this, AddReservationActivity.class);
-            //    startActivity(intent);
-             //   break;
-          //  case R.id.displayAllReservationsMainId:
-             //   intent = new Intent(MainActivity.this, ShowAllActivity.class);
-             //   intent.putExtra(Constants.SHOW_ALL, Constants.ReservationConst.RESERVATION);
-              //  startActivity(intent);
-              //  break;
+            case R.id.addReservationMainId:
+                intent = new Intent(MainActivity.this, AddReservationActivity.class);
+               startActivity(intent);
+                break;
+           case R.id.displayAllReservationsMainId:
+               intent = new Intent(MainActivity.this, ShowAllActivity.class);
+                intent.putExtra(Constants.SHOW_ALL, Constants.ReservationConst.RESERVATION);
+                startActivity(intent);
+                break;
 
         }
     }

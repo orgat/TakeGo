@@ -140,13 +140,12 @@
             android:textStyle="bold" />
 
 
-        <EditText
+        <TextView
             android:id="@+id/rentBeginningId"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="@android:color/white"
-            android:inputType="date"
             />
 
     </LinearLayout>
@@ -165,13 +164,12 @@
             android:textStyle="bold" />
 
 
-        <EditText
+        <TextView
             android:id="@+id/rentEndId"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="@android:color/white"
-            android:inputType="date" />
+            android:background="@android:color/white" />
 
     </LinearLayout>
 

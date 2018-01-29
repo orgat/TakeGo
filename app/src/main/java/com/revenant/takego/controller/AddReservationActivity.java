@@ -1,26 +1,33 @@
 package com.revenant.takego.controller;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.revenant.takego.R;
 import com.revenant.takego.model.backend.Constants;
 import com.revenant.takego.model.backend.DBManagerFactory;
 
+import java.util.Calendar;
+
 public class AddReservationActivity extends Activity {
 
     private EditText customerNumber;
-    private EditText rentBegining;
-    private EditText rentEnd;
+    private TextView rentBegining;
+    private TextView rentEnd;
     private EditText preMileage;
     private EditText carNumber;
     private EditText postMileage;
@@ -31,6 +38,9 @@ public class AddReservationActivity extends Activity {
     private Button addReservation;
     private boolean wasRefueled;
     private boolean isOpen;
+    private String selectedDate;
+    private DatePickerDialog.OnDateSetListener mDateEndSetListener;
+    private DatePickerDialog.OnDateSetListener mDateBeginningSetListener;
 
 
     @Override
@@ -38,6 +48,70 @@ public class AddReservationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reservation);
         findViews();
+
+
+        rentEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year= cal.get(Calendar.YEAR);
+                int month= cal.get(Calendar.MONTH);
+                int day= cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        AddReservationActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateEndSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+            }
+        });
+
+        rentBegining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year= cal.get(Calendar.YEAR);
+                int month= cal.get(Calendar.MONTH);
+                int day= cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        AddReservationActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateBeginningSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+        mDateBeginningSetListener= new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month= month+1;
+                String monthString= (month<10) ? ("0"+month) : (""+month);
+                String dayString= (day<10) ? ("0"+day) : (""+day);
+                selectedDate= ""+year+"-"+monthString+"-"+dayString;
+                rentBegining.setText(selectedDate);
+            }
+        };
+
+
+
+        mDateEndSetListener= new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month= month+1;
+                String monthString= (month<10) ? ("0"+month) : (""+month);
+                String dayString= (day<10) ? ("0"+day) : (""+day);
+                selectedDate= ""+year+"-"+monthString+"-"+dayString;
+                rentEnd.setText(selectedDate);
+            }
+        };
+
 
 
         status.check(R.id.openId);
